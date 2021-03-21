@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "zess-mrs-web"
+    }
+  },
+  "defaultProject": "zess-mrs-web",
+  "cli": {
+    "analytics": "53ea84d1-fe08-4d96-bd69-942320c7ffbd"
+  }
 }
