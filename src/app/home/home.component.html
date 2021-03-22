@@ -55,45 +55,6 @@
             </a>
             <mat-divider></mat-divider>
           </ng-container>
-          <!-- <ng-container *ngIf="menu?.children">
-                <mat-accordion>
-                  <mat-expansion-panel
-                    [expanded]="menu?.name === currentMenu || menu?.route.indexOf(active_route_string) > -1"
-                    (click)="currentMenu = menu?.name"
-                  >
-                    <mat-expansion-panel-header>
-                      <mat-panel-title
-                        class="big-menu-items"
-                      >
-                        <img
-                          src="assets/images/icons/{{ menu.icon }}"
-                          alt="{{ menu.icon }}"
-                        />
-                        {{ menu?.name }}
-                      </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ng-container *ngFor="let menuItem of menu?.children">
-                      <ng-container *appHasPermission="menuItem.access">
-                        <a
-                          style="padding-left: 20px;"
-                          mat-list-item
-                          [routerLink]="menuItem.route"
-                          routerLinkActive="active-menu"
-                        >
-                          <img
-                            src="assets/images/icons/{{ menuItem.icon }}"
-                            alt="{{ menuItem.icon }}"
-                          />
-                          <span *ngIf="menuItem?.icon">&nbsp;</span>
-                          <span>{{ menuItem.name }}</span>
-                        </a>
-                        <mat-divider></mat-divider>
-                      </ng-container>
-                    </ng-container>
-                  </mat-expansion-panel>
-                </mat-accordion>
-                <mat-divider></mat-divider>
-              </ng-container> -->
         </ng-container>
       </ng-container>
     </mat-nav-list>

@@ -10,27 +10,23 @@ export class HomeComponent implements OnInit {
   menus = [
     {
       name: 'Case',
-      route: '/users',
+      route: '/case',
       icon: 'case.png',
-      helpUrls: ['/userConfiguration/users0.png'],
     },
     {
       name: 'Patients',
-      route: '/users',
+      route: '/patients',
       icon: 'patients.png',
-      helpUrls: ['/userConfiguration/users0.png'],
     },
     {
       name: 'Customers',
-      route: '/users',
+      route: '/customers',
       icon: 'customers.png',
-      helpUrls: ['/userConfiguration/users0.png'],
     },
     {
       name: 'Users',
       route: '/users',
       icon: 'users.png',
-      helpUrls: ['/userConfiguration/users0.png'],
     },
   ];
   constructor() { }
