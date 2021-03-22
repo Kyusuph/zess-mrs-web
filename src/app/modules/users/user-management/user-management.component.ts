@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-management.component.scss']
 })
 export class UserManagementComponent implements OnInit {
-
+  tableConfiguration = {
+    tableColumns : [
+      {name:'name', label:'Name'}
+    ]
+  }
   constructor() { }
 
   ngOnInit(): void {

@@ -1,1 +1,17 @@
-<p>Works!</p>
+<shared-layout [title]="'User Management'">
+  <div class="row">
+    <div class="col-sm-12" style="padding-bottom: 10px">
+      <span style="float: right">
+        <button mat-stroked-button class="add-button">
+          <mat-icon style="color: #00284d;">add_circle</mat-icon>Add User
+        </button>
+      </span>
+    </div>
+    <div class="col-sm-12">
+      <app-table
+        [tableConfiguration]="tableConfiguration"
+        [tableList]="[]"
+      ></app-table>
+    </div>
+  </div>
+</shared-layout>
