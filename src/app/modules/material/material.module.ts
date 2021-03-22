@@ -33,6 +33,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatTreeModule } from '@angular/material/tree';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -64,6 +65,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatBadgeModule,
     MatSortModule,
     MatPaginatorModule,
+    ReactiveFormsModule,
+    FormsModule,
     MatRadioModule,
     MatTreeModule,
     MatStepperModule,
@@ -97,6 +100,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatDatepickerModule,
     MatNativeDateModule,
     MatTableModule,
+    ReactiveFormsModule,
+    FormsModule,
     // LayoutModule,
     MatBadgeModule,
     MatSortModule,
