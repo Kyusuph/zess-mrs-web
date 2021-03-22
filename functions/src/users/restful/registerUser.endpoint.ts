@@ -3,10 +3,8 @@ import { Endpoint, RequestType } from 'firebase-backend';
 import axios from 'axios';
 import * as projectConfig from '../../../config/config';
 
-// var projectKey = 'AIzaSyALBA4HUgyBDz2enAm9_8HP6cViU7e3Upg';
-
 export default new Endpoint(
-  'authenticate',
+  'registerUser',
   RequestType.POST,
   async (req: Request, res: Response) => {
     const { email, password } = req.body;
@@ -19,7 +17,7 @@ export default new Endpoint(
       res.status(403).send(error);
     }
     try {
-      const url = `${projectConfig.config.signInWithEmailAndPassword}?key=${key}`;
+      const url = `${projectConfig.config.signUpWithEmailAndPassword}?key=${key}`;
       const body = {
         email,
         password,
