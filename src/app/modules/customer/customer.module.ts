@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CustomerManagementComponent } from './customer-management/customer-management.component';
 import {CustomerRoutingModule} from './customer-routing.module';
 import {SharedModule} from '../../shared/shared.module';
+import {MaterialModule} from '../../modules/material/material.module';
 
 
 
@@ -11,7 +12,8 @@ import {SharedModule} from '../../shared/shared.module';
   imports: [
     CommonModule,
     CustomerRoutingModule,
-    SharedModule
+    SharedModule,
+    MaterialModule
   ]
 })
 export class CustomerModule { }

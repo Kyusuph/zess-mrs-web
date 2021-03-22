@@ -6,7 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-management.component.scss']
 })
 export class CustomerManagementComponent implements OnInit {
-
+  tableConfiguration = {
+    tableColumns: [
+      {name:'firstname', label:'First Name'},
+      {name:'surname', label:'Surname'},
+      {name:'phoneNumber', label:'Phone Number'},
+      // {}
+    ]
+  }
   constructor() { }
 
   ngOnInit(): void {

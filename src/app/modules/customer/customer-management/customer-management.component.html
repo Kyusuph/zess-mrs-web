@@ -1,3 +1,17 @@
-<shared-layout [title]="'Customer Management'" [icon]="'customers.png'"> 
-
+<shared-layout [title]="'Customer Management'" [icon]="'customers.png'">
+  <div class="row">
+    <div class="col-sm-12" style="margin-bottom: 10px">
+      <span style="float: right">
+        <button mat-stroked-button class="add-button">
+          <mat-icon>add_circle</mat-icon>Add Customer
+        </button>
+      </span>
+    </div>
+    <div class="col-sm-12">
+      <app-table
+        [tableConfiguration]="tableConfiguration"
+        [tableList]="[]"
+      ></app-table>
+    </div>
+  </div>
 </shared-layout>
