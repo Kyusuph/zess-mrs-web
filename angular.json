@@ -6,6 +6,7 @@
     "zess-mrs-web": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:action": {},
         "@schematics/angular:component": {
           "style": "scss"
         }
@@ -126,6 +127,7 @@
   },
   "defaultProject": "zess-mrs-web",
   "cli": {
-    "analytics": "53ea84d1-fe08-4d96-bd69-942320c7ffbd"
+    "analytics": "53ea84d1-fe08-4d96-bd69-942320c7ffbd",
+    "defaultCollection": "@ngrx/schematics"
   }
 }
