@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CaseManagementComponent } from './case-management/case-management.component';
 import {SharedModule} from '../../shared/shared.module';
 import {CaseRoutingModule} from './case-routing.module';
+import {MaterialModule} from '../material/material.module';
 
 
 
@@ -11,7 +12,8 @@ import {CaseRoutingModule} from './case-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    CaseRoutingModule
+    CaseRoutingModule,
+    MaterialModule
   ]
 })
 export class CaseModule { }

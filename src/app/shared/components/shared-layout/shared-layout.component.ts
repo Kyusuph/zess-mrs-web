@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SharedLayoutComponent implements OnInit {
   @Input() title='';
+  @Input() icon = '';
   constructor() { }
 
   ngOnInit(): void {

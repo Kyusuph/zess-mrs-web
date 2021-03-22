@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PatientManagementComponent } from './patient-management/patient-management.component';
 import {SharedModule} from '../../shared/shared.module';
 import {PatientRoutingModule} from './patient-routing.module';
+import {MaterialModule} from '../material/material.module';
 
 
 
@@ -11,7 +12,8 @@ import {PatientRoutingModule} from './patient-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    PatientRoutingModule
+    PatientRoutingModule,
+    MaterialModule
   ]
 })
 export class PatientsModule { }
