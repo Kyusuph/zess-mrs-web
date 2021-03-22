@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AddEditUserComponent } from './add-edit-user/add-edit-user.component';
 
 @Component({
   selector: 'app-user-management',
@@ -11,9 +13,13 @@ export class UserManagementComponent implements OnInit {
       {name:'name', label:'Name'}
     ]
   }
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  addUser() {
+    this.dialog.open(AddEditUserComponent);
   }
 
 }

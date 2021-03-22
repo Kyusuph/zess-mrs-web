@@ -34,6 +34,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatTreeModule } from '@angular/material/tree';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   imports: [
@@ -53,6 +54,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatMenuModule,
     MatIconModule,
     MatTooltipModule,
+    MatDividerModule,
     MatSnackBarModule,
     MatProgressBarModule,
     MatSlideToggleModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-edit-user',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-edit-user.component.scss']
 })
 export class AddEditUserComponent implements OnInit {
-
-  constructor() { }
+  userForm:FormGroup;
+  constructor(private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
+    this.userForm = this.formBuilder.group({
+      'firstname': ['', Validators.required],
+      'middlename': [''],
+      'surname': ['', Validators.required],
+      'email': ['', [Validators.required, Validators.email]],
+      'phoneNumber': ['', Validators.required],
+      'password': ['', Validators.required]
+    })
   }
 
 }
