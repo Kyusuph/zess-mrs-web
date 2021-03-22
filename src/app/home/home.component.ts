@@ -11,19 +11,19 @@ export class HomeComponent implements OnInit {
     {
       name: 'Case',
       route: '/users',
-      icon: 'users.png',
+      icon: 'case.png',
       helpUrls: ['/userConfiguration/users0.png'],
     },
     {
       name: 'Patients',
       route: '/users',
-      icon: 'users.png',
+      icon: 'patients.png',
       helpUrls: ['/userConfiguration/users0.png'],
     },
     {
       name: 'Customers',
       route: '/users',
-      icon: 'users.png',
+      icon: 'customers.png',
       helpUrls: ['/userConfiguration/users0.png'],
     },
     {
