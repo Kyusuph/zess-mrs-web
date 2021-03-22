@@ -3,6 +3,11 @@ import { Endpoint, RequestType } from 'firebase-backend';
 import axios from 'axios';
 import * as projectConfig from '../../../config/config';
 
+const admin = require('firebase-admin');
+admin.initializeApp();
+
+const db = admin.firestore();
+
 export default new Endpoint(
   'registerUser',
   RequestType.POST,
@@ -24,6 +29,11 @@ export default new Endpoint(
         returnSecureToken: true,
       };
       const authRes = await axios.post(url, body);
+      const id = authRes.data['localId'];
+      await db.collection('users').doc(id).set({
+        id,
+        email,
+      });
       res.send(authRes.data);
     } catch (e) {
       console.error(e);
