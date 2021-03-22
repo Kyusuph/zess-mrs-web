@@ -1,0 +1,107 @@
+<nav class="main-navv mat-elevation-z0 title-nav">
+  <mat-toolbar class="toolbar no-print title-nav">
+    <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      class="cursor"
+      (click)="drawer.toggle()"
+    >
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <span
+      style="
+        display: inline-block;
+        margin-top: 14px;
+        margin-left: 7px;
+        font-size: 25px;
+        color: white;
+        letter-spacing: 2px;
+      "
+    >
+      <span> <span>Z</span><span class="smt">ess</span>&nbsp; </span>
+    </span>
+    <span class="example-fill-remaining-space"></span>
+  </mat-toolbar>
+</nav>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav no-print"
+    fixedInViewport="false"
+    [attr.role]="'navigation'"
+    [mode]="'side'"
+    [opened]="true"
+  >
+    <mat-nav-list>
+      <ng-container *ngFor="let menu of menus">
+        <ng-container>
+          <ng-container>
+            <a
+              mat-list-item
+              class="big-menu-items1"
+              [routerLink]="menu?.route"
+              routerLinkActive="active-menu"
+            >
+              <span
+                *ngIf="menu?.icon"
+                class="ks-icon fa fa-{{ menu?.icon }}"
+              ></span>
+              <img
+                src="assets/images/icons/{{ menu.icon }}"
+                alt="{{ menu.icon }}"
+              />
+              <span>{{ menu?.name }}</span>
+            </a>
+            <mat-divider></mat-divider>
+          </ng-container>
+          <!-- <ng-container *ngIf="menu?.children">
+                <mat-accordion>
+                  <mat-expansion-panel
+                    [expanded]="menu?.name === currentMenu || menu?.route.indexOf(active_route_string) > -1"
+                    (click)="currentMenu = menu?.name"
+                  >
+                    <mat-expansion-panel-header>
+                      <mat-panel-title
+                        class="big-menu-items"
+                      >
+                        <img
+                          src="assets/images/icons/{{ menu.icon }}"
+                          alt="{{ menu.icon }}"
+                        />
+                        {{ menu?.name }}
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ng-container *ngFor="let menuItem of menu?.children">
+                      <ng-container *appHasPermission="menuItem.access">
+                        <a
+                          style="padding-left: 20px;"
+                          mat-list-item
+                          [routerLink]="menuItem.route"
+                          routerLinkActive="active-menu"
+                        >
+                          <img
+                            src="assets/images/icons/{{ menuItem.icon }}"
+                            alt="{{ menuItem.icon }}"
+                          />
+                          <span *ngIf="menuItem?.icon">&nbsp;</span>
+                          <span>{{ menuItem.name }}</span>
+                        </a>
+                        <mat-divider></mat-divider>
+                      </ng-container>
+                    </ng-container>
+                  </mat-expansion-panel>
+                </mat-accordion>
+                <mat-divider></mat-divider>
+              </ng-container> -->
+        </ng-container>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="content" style="margin-top: 60px">
+      <router-outlet #o="outlet"></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
