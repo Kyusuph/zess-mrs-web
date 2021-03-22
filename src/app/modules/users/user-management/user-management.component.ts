@@ -19,7 +19,13 @@ export class UserManagementComponent implements OnInit {
   }
 
   addUser() {
-    this.dialog.open(AddEditUserComponent);
+    this.dialog.open(AddEditUserComponent, {
+      disableClose:true
+    });
+  }
+
+  onClose() {
+    this.dialog.closeAll();
   }
 
 }
