@@ -4,12 +4,13 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { SharedModule } from '../../shared/shared.module';
 import { UserRoutingModule } from './users-routing.module';
 import { MaterialModule } from '../material/material.module';
+import { AddEditUserComponent } from './user-management/add-edit-user/add-edit-user.component';
 
 
 
 
 @NgModule({
-  declarations: [UserManagementComponent],
+  declarations: [UserManagementComponent, AddEditUserComponent],
   imports: [
     CommonModule,
     SharedModule,
