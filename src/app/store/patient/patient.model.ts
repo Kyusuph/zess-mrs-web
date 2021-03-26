@@ -2,7 +2,7 @@ export interface Patient {
     id:string;
     firstName:string;
     middleName:string;
-    lastName:string;
+    surname:string;
     gender:string;
     phoneNumber:string;
     address:string;
