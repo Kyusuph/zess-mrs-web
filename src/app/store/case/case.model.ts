@@ -13,4 +13,5 @@ export interface Case {
     createdAt?:string;
     updatedAt?:string;
     deletedAt?:string
+    measurements?: {[id: string]: number};
 }

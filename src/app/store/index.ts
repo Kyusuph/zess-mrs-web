@@ -9,6 +9,7 @@ import * as fromUser from './user/user.reducer';
 import { environment } from '../../environments/environment';
 import { RouterStateUrl } from './router/router.reducer';
 import * as fromCases from './case/case.reducer';
+import * as fromMeasurements from './measurement/measurement.reducer';
 import * as fromPatient from './patient/patient.reducer';
 import * as fromCustomer from './customer/customer.reducer';
 
@@ -16,14 +17,16 @@ export interface ApplicationState {
     users: fromUser.State,
     cases: fromCases.State,
     patient: fromPatient.State,
-    customer: fromCustomer.State
+    customer: fromCustomer.State,
+    measurements: fromMeasurements.State
 }
 
 export const reducers: ActionReducerMap<ApplicationState> = {
     users: fromUser.userReducer,
     cases: fromCases.caseReducer,
     patient: fromPatient.patientReducer,
-    customer: fromCustomer.customerReducer
+    customer: fromCustomer.customerReducer,
+    measurements: fromMeasurements.measurementReducer
 };
 
 export const metaReducers: MetaReducer<
