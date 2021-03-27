@@ -4,6 +4,7 @@ import { ApplicationState } from '../../../../store';
 import { Store } from '@ngrx/store';
 import { upsertUser } from '../../../../store/user/user.actions';
 import { User } from 'src/app/store/user/user.model';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-edit-user',
@@ -12,7 +13,7 @@ import { User } from 'src/app/store/user/user.model';
 })
 export class AddEditUserComponent implements OnInit {
   userForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private store: Store<ApplicationState>) { }
+  constructor(private formBuilder: FormBuilder, private store: Store<ApplicationState>, private dialogRef:MatDialogRef<AddEditUserComponent>) { }
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
@@ -57,6 +58,13 @@ export class AddEditUserComponent implements OnInit {
       middlename: formData['middleName']
     }
     this.store.dispatch(upsertUser({ user: userObject }))
+    this.onClose();
   }
+
+  onClose() {
+    this.dialogRef.close();
+  }
+
+
 
 }

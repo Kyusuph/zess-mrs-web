@@ -1,1 +1,88 @@
-<p>add-edit-patient works!</p>
+<div class="row">
+  <div class="col-sm-12">
+    <span class="text-muted">Add New Patient</span>
+  </div>
+</div>
+<mat-divider></mat-divider>
+<div>
+  <form [formGroup]="patientForm">
+    <div class="row">
+      <div class="col-sm-12">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="firstname"
+            autocomplete="off"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Middle Name</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="middlename"
+            autocomplete="off"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Surname</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="surname"
+            autocomplete="off"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender" matInput>
+            <mat-option [value]="'Male'">Male</mat-option>
+            <mat-option [value]="'Female'">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="phoneNumber"
+            autocomplete="off"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input type="text" matInput formControlName="address" />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Date Of Birth</mat-label>
+          <input matInput [matDatepicker]="datepicker" formControlName="dob" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="datepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #datepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12">
+        <save-area
+          (save)="onSave(patientForm.value)"
+          (cancel)="onCancel()"
+        ></save-area>
+      </div>
+    </div>
+  </form>
+</div>

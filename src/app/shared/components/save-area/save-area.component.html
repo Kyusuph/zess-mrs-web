@@ -1,11 +1,10 @@
 <span style="float: right">
-  <button mat-stroked-button mat-dialog-close class="cancel-button">
+  <button mat-stroked-button class="cancel-button" (click)="onCancel()">
     <mat-icon>close</mat-icon>Cancel</button
   >&nbsp;
   <button
     mat-stroked-button
     class="save-button"
-    [mat-dialog-close]="true"
     (click)="onSave()"
   >
     <mat-icon>save</mat-icon>Save

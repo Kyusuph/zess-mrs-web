@@ -1,7 +1,17 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "node_modules/bootstrap/scss/bootstrap.scss";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-
+@import "~@angular/material/theming";
+@include mat-core();
+$zess-app-primary: mat-palette($mat-indigo);
+$zess-app-accent: mat-palette($mat-pink, A200, A100, A400);
+$zess-app-warn: mat-palette($mat-red);
+$zess-app-theme: mat-light-theme(
+  $zess-app-primary,
+  $zess-app-accent,
+  $zess-app-warn
+);
+@include angular-material-theme($zess-app-theme);
 .add-button {
   color: #00284d;
   border-color: #00284d !important;
@@ -16,7 +26,7 @@
 
 .cancel-button {
   border-color: red;
-  color:red;
+  color: red;
   font-weight: bold;
 }
 

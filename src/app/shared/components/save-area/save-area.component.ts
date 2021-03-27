@@ -8,6 +8,7 @@ import { emit } from 'process';
 })
 export class SaveAreaComponent implements OnInit {
   @Output() save = new EventEmitter();
+  @Output() cancel = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -15,5 +16,9 @@ export class SaveAreaComponent implements OnInit {
 
   onSave(){
     this.save.emit();
+  }
+
+  onCancel() {
+    this.cancel.emit();
   }
 }
