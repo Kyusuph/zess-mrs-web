@@ -1,0 +1,17 @@
+[debug] [2021-03-27T04:23:14.573Z] ----------------------------------------------------------------------
+[debug] [2021-03-27T04:23:14.575Z] Command:       /usr/local/bin/firebase /home/kayson/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2021-03-27T04:23:14.575Z] CLI Version:   8.15.1
+[debug] [2021-03-27T04:23:14.575Z] Platform:      linux
+[debug] [2021-03-27T04:23:14.575Z] Node Version:  v12.18.1
+[debug] [2021-03-27T04:23:14.576Z] Time:          Sat Mar 27 2021 07:23:14 GMT+0300 (East Africa Time)
+[debug] [2021-03-27T04:23:14.576Z] ----------------------------------------------------------------------
+[debug] [2021-03-27T04:23:14.576Z] 
+[debug] [2021-03-27T04:23:14.580Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-27T04:23:14.580Z] > authorizing via signed-in user
+[debug] [2021-03-27T04:23:14.581Z] [iam] checking project zess-mrs-backend for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2021-03-27T04:23:14.582Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-03-27T04:23:14.582Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-03-27T04:23:15.426Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Sat, 27 Mar 2021 04:23:15 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-27T04:23:15.431Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/zess-mrs-backend:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
