@@ -4,11 +4,12 @@ import { PatientManagementComponent } from './patient-management/patient-managem
 import {SharedModule} from '../../shared/shared.module';
 import {PatientRoutingModule} from './patient-routing.module';
 import {MaterialModule} from '../material/material.module';
+import { AddEditPatientComponent } from './patient-management/add-edit-patient/add-edit-patient.component';
 
 
 
 @NgModule({
-  declarations: [PatientManagementComponent],
+  declarations: [PatientManagementComponent, AddEditPatientComponent],
   imports: [
     CommonModule,
     SharedModule,

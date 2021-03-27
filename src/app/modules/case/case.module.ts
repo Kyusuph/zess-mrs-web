@@ -4,11 +4,12 @@ import { CaseManagementComponent } from './case-management/case-management.compo
 import {SharedModule} from '../../shared/shared.module';
 import {CaseRoutingModule} from './case-routing.module';
 import {MaterialModule} from '../material/material.module';
+import { AddEditCaseComponent } from './case-management/add-edit-case/add-edit-case.component';
 
 
 
 @NgModule({
-  declarations: [CaseManagementComponent],
+  declarations: [CaseManagementComponent, AddEditCaseComponent],
   imports: [
     CommonModule,
     SharedModule,
