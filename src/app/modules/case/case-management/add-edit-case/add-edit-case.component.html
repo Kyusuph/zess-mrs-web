@@ -1,1 +1,65 @@
-<p>add-edit-case works!</p>
+<div class="row">
+  <div class="col-sm-12">
+    <span style="font-weight: bold; color: #00284d">Add New Case</span>
+  </div>
+</div>
+<mat-divider></mat-divider>
+<div style="margin-top: 10px">
+  <form [formGroup]="caseForm">
+    <div class="row">
+      <div class="col-sm-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Case Number</mat-label>
+          <input
+            type="text"
+            formControlName="caseNumber"
+            matInput
+            autocomplete="off"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="datepicker" formControlName="date" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="datepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #datepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Patient</mat-label>
+          <mat-select matInput formControlName="patient">
+            <div class="row" style="padding: 10px; width: 90%;">
+                <div class="col-sm-11">
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="Search">
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-1">
+                    <button mat-stroked-button class="new-patient"><mat-icon>add_circle</mat-icon>New Patient</button>
+                </div>
+            </div>
+            <div>
+              <mat-option></mat-option>
+            </div>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status" matInput>
+            <mat-option></mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12">
+        <save-area></save-area>
+      </div>
+    </div>
+  </form>
+</div>
