@@ -14,6 +14,7 @@ export class Go implements Action {
       extras?: NavigationExtras;
     }
   ) {
+    console.log('path', payload.path)
   }
 }
 

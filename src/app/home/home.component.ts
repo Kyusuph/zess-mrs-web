@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { routeAnimations } from '../shared/animations/router-animation';
+import { ApplicationState } from '../store';
+import { Go } from '../store/router/router.action';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  animations:[routeAnimations]
+  animations: [routeAnimations]
 })
 export class HomeComponent implements OnInit {
   isOpen = false;
@@ -31,9 +34,14 @@ export class HomeComponent implements OnInit {
       icon: 'users.png',
     },
   ];
-  constructor() { }
+  constructor(private store: Store<ApplicationState>) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('user-token')) {
+    } else {
+      console.log('has token')
+      this.store.dispatch(new Go({ path: ['login'] }))
+    }
   }
 
   check(event) {

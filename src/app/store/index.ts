@@ -12,8 +12,8 @@ import * as fromCases from './case/case.reducer';
 import * as fromMeasurements from './measurement/measurement.reducer';
 import * as fromPatient from './patient/patient.reducer';
 import * as fromCustomer from './customer/customer.reducer';
-
 export interface ApplicationState {
+    routerReducer: fromRouter.RouterReducerState<RouterStateUrl>;
     users: fromUser.State,
     cases: fromCases.State,
     patient: fromPatient.State,
@@ -22,6 +22,8 @@ export interface ApplicationState {
 }
 
 export const reducers: ActionReducerMap<ApplicationState> = {
+
+    routerReducer: fromRouter.routerReducer,
     users: fromUser.userReducer,
     cases: fromCases.caseReducer,
     patient: fromPatient.patientReducer,

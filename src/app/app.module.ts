@@ -13,7 +13,7 @@ import { SharedModule } from '../app/shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { metaReducers, reducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AppEffects} from './store/app.effects';
+import { AppEffects } from './store/app.effects';
 import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
@@ -31,7 +31,12 @@ import { EffectsModule } from '@ngrx/effects';
     StoreRouterConnectingModule.forRoot({
       serializer: DefaultRouterStateSerializer,
     }),
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers, {
+      metaReducers, runtimeChecks: {
+        strictStateImmutability: false,
+        strictActionImmutability: false,
+      },
+    }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
   ],
