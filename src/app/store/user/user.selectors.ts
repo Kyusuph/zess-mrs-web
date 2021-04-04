@@ -9,3 +9,5 @@ export const getUserState = createFeatureSelector<fromReducer.State>(
 export const selectIds = createSelector(getUserState, fromReducer.selectIds);
 
 export const selectAll = createSelector(getUserState, fromReducer.selectAll);
+
+export const selectCurrentUser = createSelector(getUserState, fromReducer.getCurrentUser);

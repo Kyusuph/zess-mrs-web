@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { upsertUser } from '../../../../store/user/user.actions';
 import { User } from 'src/app/store/user/user.model';
 import { MatDialogRef } from '@angular/material/dialog';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-add-edit-user',
@@ -13,17 +14,19 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AddEditUserComponent implements OnInit {
   userForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private store: Store<ApplicationState>, private dialogRef:MatDialogRef<AddEditUserComponent>) { }
+  loading = false;
+  constructor(private formBuilder: FormBuilder, private store: Store<ApplicationState>, private dialogRef: MatDialogRef<AddEditUserComponent>, private userService: UserService) { }
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
       'firstname': ['', Validators.required],
       'middlename': [''],
+      'username': ['', Validators.required],
       'surname': ['', Validators.required],
       'email': ['', [Validators.required, Validators.email]],
       'phoneNumber': ['', Validators.required],
       'password': ['', Validators.required],
-      'gender':['', Validators.required]
+      'gender': ['', Validators.required]
     })
   }
 
@@ -47,17 +50,33 @@ export class AddEditUserComponent implements OnInit {
     return text;
   }
 
-  onSave(formData) {
+  async onSave(formData) {
+    this.loading = true;
     const userObject: User = {
       id: this.makeId(),
-      firstname: formData['firstname'],
+      firstName: formData['firstname'],
       surname: formData['surname'],
       phoneNumber: formData['phoneNumber'],
       email: formData['email'],
       gender: formData['gender'],
-      middlename: formData['middleName']
+      middlename: formData['middleName'],
+      organisationUnits: [{ id: 'REJLn84PlMJ' }],
+      userCredentials: {
+        id: this.makeId(),
+        userInfo: {
+          id: this.makeId()
+        },
+        username: formData['username'],
+        password: formData['password']
+      }
     }
-    this.store.dispatch(upsertUser({ user: userObject }))
+    try {
+      await this.userService.addDHISUser(userObject).toPromise();
+      this.store.dispatch(upsertUser({ user: userObject }))
+    }catch(e) {
+      console.error(e)
+    }
+    this.loading = false;
     this.onClose();
   }
 

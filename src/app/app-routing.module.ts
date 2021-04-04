@@ -8,14 +8,13 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
-
       {
         path: '',
         loadChildren: () =>
-          import('./modules/users/users.module').then(
-            (m) => m.UsersModule
+          import('./modules/case/case.module').then(
+            (m) => m.CaseModule
           ),
-        data: { state: 'users' }
+        data: { state: 'case' }
       },
       {
         path: 'users',

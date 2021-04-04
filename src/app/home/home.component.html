@@ -26,6 +26,13 @@
       <span> <span>Z</span><span class="smt">ess</span>&nbsp; </span>
     </span>
     <span class="example-fill-remaining-space"></span>
+    <span style="padding: 10px 5px 0 0"><mat-icon>person</mat-icon></span>
+    <span style="float: right; cursor: pointer;" class="smt" [matMenuTriggerFor]="menu">{{(currentUser$ | async).name}}</span>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item><span style="padding: 10px 0 0 0"><mat-icon>person</mat-icon></span><span style="font-weight: bold;">Profile</span></button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="logout()"><span style="padding: 10px 0 0 0"><mat-icon>logout</mat-icon></span><span style="font-weight: bold;">Logout</span></button>
+    </mat-menu>
   </mat-toolbar>
 </nav>
 <mat-sidenav-container class="sidenav-container">

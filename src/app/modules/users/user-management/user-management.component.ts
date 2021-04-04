@@ -15,7 +15,7 @@ import * as userSelector from '../../../store/user/user.selectors';
 export class UserManagementComponent implements OnInit {
   tableConfiguration = {
     tableColumns: [
-      { name: 'firstname', label: 'First Name' },
+      { name: 'firstName', label: 'First Name' },
       { name: 'surname', label: 'Surname' },
       { name: 'phoneNumber', label: 'Phone Number' },
       { name: 'email', label: 'Email' }

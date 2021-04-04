@@ -62,7 +62,7 @@ export class UserService {
         )
         .subscribe(
           user => {
-            localStorage.setItem('tulonge-user-object', JSON.stringify(user));
+            // localStorage.setItem('user-object', JSON.stringify(user));
             observer.next(user);
             observer.complete();
           },
@@ -73,7 +73,7 @@ export class UserService {
 
   login(credentials: { username; password }): Observable<string> {
     const meUrl =
-      'me.json?fields=id,name,displayName,created,lastUpdated,email,phoneNumber,userGroups[id,name],dataViewOrganisationUnits[id,name,level,parent[id,name]],organisationUnits[id,name,level,parent[id,name]],userCredentials[username,userRoles[authorities]],attributeValues[value,attribute[id,shortName]]';
+      'me.json?fields=id,name,firstName,surname,middlename,displayName,created,lastUpdated,email,phoneNumber,userGroups[id,name],dataViewOrganisationUnits[id,name,level,parent[id,name]],organisationUnits[id,name,level,parent[id,name]],userCredentials[username,userRoles[authorities]],attributeValues[value,attribute[id,shortName]]';
     return new Observable(observer => {
       const token = this.prepareToken(credentials);
       authenticationtoken = token;
@@ -83,6 +83,7 @@ export class UserService {
         this.http.get(rootUrl + meUrl, { headers }).subscribe(
           (data: User) => {
             localStorage.setItem('current-user-token', token);
+            localStorage.setItem('user-object', JSON.stringify(data));
             observer.next('Login successful..');
             observer.complete();
           },

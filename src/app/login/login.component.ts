@@ -12,7 +12,7 @@ import { Go } from '../store/router/router.action';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-
+  authenticating = false;
   constructor(private formbBuilder: FormBuilder, private userService:UserService,private store:Store<ApplicationState>) { }
 
   ngOnInit(): void {
@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
+    this.authenticating = true;
     console.log({username: this.username, password:this.password});
     try {
       await this.userService.login({username:this.username,password:this.password}).toPromise();
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit {
     }catch(e) {
       console.error('Error login', e);
     }
+    this.authenticating = false;
   } 
 
 }

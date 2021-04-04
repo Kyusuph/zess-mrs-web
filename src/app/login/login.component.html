@@ -1,6 +1,17 @@
 <div class="justify-content-md-center">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12" >
+      <div  style="text-align: center;">
+        <span>
+          <img
+            src="assets/images/zess.png"
+            height="100px"
+            width="150px"
+            alt=""
+          /></span><br />
+        <h3>ZESS EXPAT SUPPORT SERVICES</h3>
+        <!-- <mat-divider [vertical]="true"></mat-divider> -->
+      </div>
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="row">
           <div class="col-sm-12">
@@ -15,10 +26,13 @@
               <input type="text" matInput formControlName="password" />
             </mat-form-field>
           </div>
-          <div class="col-sm-12" style="padding: 10px">
-            <button class="btn btn-primary" style="width: 100%; padding: 10px">
+          <div class="col-sm-12" style="padding: 10px" *ngIf="!authenticating">
+            <button class="btn" style="width: 100%; padding: 10px; background-color:#00284d; color: white;">
               Login
             </button>
+          </div>
+          <div class="col-sm-12" *ngIf="authenticating">
+            <app-loader></app-loader>
           </div>
         </div>
       </form>
