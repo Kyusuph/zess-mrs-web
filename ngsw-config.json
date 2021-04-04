@@ -1,0 +1,53 @@
+{
+    "index": "/index.html",
+    "assetGroups": [
+      {
+        "name": "app",
+        "installMode": "prefetch",
+        "resources": {
+          "files": [
+            "/favicon.ico",
+            "/index.html",
+            "/*.css",
+            "/*.js"
+          ],
+          "urls": [
+            "https://fonts.googleapis.com/**",
+            "https://fonts.gstatic.com/s/**",
+            "https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2",
+            "https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2",
+            "https://fonts.gstatic.com/s/materialicons/v41/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2"
+          ]
+        }
+      }, {
+        "name": "assets",
+        "installMode": "prefetch",
+        "updateMode": "prefetch",
+        "resources": {
+          "files": [
+            "/assets/**",
+            "/fontawesome-webfont*",
+            "/favicon.ico",
+            "/manifest.webapp",
+            "/manifest.json"
+          ]
+        }
+      }
+    ],
+    "dataGroups": [
+      {
+        "name": "api",
+        "urls": [
+          "https://tulongetest.org/test/api/**",
+          "!https://tulongetest.org/test/api/me.json**"
+        ],
+        "cacheConfig": {
+          "maxSize": 1000,
+          "maxAge": "1d",
+          "timeout": "20s",
+          "strategy": "freshness"
+        }
+      }
+    ]
+  }
+  

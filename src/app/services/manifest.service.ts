@@ -42,7 +42,7 @@ export class ManifestService {
   }
 
   public getManifest(): Observable<Manifest> {
-    return this._manifestLoaded ? of(this._manifest) : this.httpClient.get<Manifest>('manifest.webapp').pipe(
+    return this._manifestLoaded ? of(this._manifest) : this.httpClient.get<Manifest>('/manifest.webapp').pipe(
       catchError((error) => {
         console.warn('Manifest file could not be loaded, default options have been used instead');
         console.error({error});
@@ -56,6 +56,7 @@ export class ManifestService {
 
   public getRootUrl(): Observable<string> {
     return this.getManifest().pipe(map((manifest: Manifest) => {
+      console.log('manifest',manifest);
 
       if (!manifest) {
         return this._defaultRootUrl;

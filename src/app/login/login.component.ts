@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     console.log({username: this.username, password:this.password});
     try {
       await this.userService.login({username:this.username,password:this.password}).toPromise();
-      this.store.dispatch(new Go({path:['home']}));
+      this.store.dispatch(new Go({path:['']}));
     }catch(e) {
       console.error('Error login', e);
     }
