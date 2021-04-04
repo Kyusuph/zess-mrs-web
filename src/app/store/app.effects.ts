@@ -1,13 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Actions, createEffect } from '@ngrx/effects';
+import { RouterEffects } from './router/router.effect';
 
-
-
-@Injectable()
-export class AppEffects {
-
-
-
-  constructor(private actions$: Actions) {}
-
-}
+export const effects: any[] = [
+  RouterEffects,
+];

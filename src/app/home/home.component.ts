@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   constructor(private store: Store<ApplicationState>) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('user-token')) {
+    if (localStorage.getItem('current-user-token')) {
     } else {
       console.log('has token')
       this.store.dispatch(new Go({ path: ['login'] }))

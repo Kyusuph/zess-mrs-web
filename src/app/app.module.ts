@@ -13,8 +13,10 @@ import { SharedModule } from '../app/shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { metaReducers, reducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AppEffects } from './store/app.effects';
+import { effects } from './store/app.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { CustomSerializer } from './store/router/router.reducer';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { EffectsModule } from '@ngrx/effects';
     MaterialModule,
     BrowserAnimationsModule,
     SharedModule,
+    HttpClientModule,
     StoreRouterConnectingModule.forRoot({
       serializer: DefaultRouterStateSerializer,
     }),
@@ -38,9 +41,9 @@ import { EffectsModule } from '@ngrx/effects';
       },
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AppEffects]),
+    EffectsModule.forRoot(effects),
   ],
-  providers: [],
+  providers: [{provide: RouterStateSerializer, useClass: CustomSerializer}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
