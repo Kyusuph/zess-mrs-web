@@ -12,3 +12,5 @@ export const upsertUser = createAction('[User] Upsert User', props<{ user: User 
 export const upsertUsers = createAction('[User] Upsert users', props<{ users: User[] }>());
 
 export const addCurrentUser = createAction('[User] Add user', props<{ user: User }>());
+
+export const getUsers = createAction('[User] Get Users ');

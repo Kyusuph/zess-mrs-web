@@ -73,7 +73,7 @@ export class UserService {
 
   login(credentials: { username; password }): Observable<string> {
     const meUrl =
-      'me.json?fields=id,name,firstName,surname,middlename,displayName,created,lastUpdated,email,phoneNumber,userGroups[id,name],dataViewOrganisationUnits[id,name,level,parent[id,name]],organisationUnits[id,name,level,parent[id,name]],userCredentials[username,userRoles[authorities]],attributeValues[value,attribute[id,shortName]]';
+      'me.json?fields=id,name,gender,firstName,surname,middlename,displayName,created,lastUpdated,email,phoneNumber,userGroups[id,name],dataViewOrganisationUnits[id,name,level,parent[id,name]],organisationUnits[id,name,level,parent[id,name]],userCredentials[username,userRoles[authorities]],attributeValues[value,attribute[id,shortName]]';
     return new Observable(observer => {
       const token = this.prepareToken(credentials);
       authenticationtoken = token;
@@ -155,9 +155,11 @@ export class UserService {
               username: user.userCredentials.username
             };
           });
+          console.log('users', users)
           observer.next(users);
           observer.complete();
         }, (error) => {
+          console.log('error', error)
           observer.error(error);
         });
     });
@@ -171,6 +173,7 @@ export class UserService {
           observer.complete();
         } else {
           this.httpClient.put('users/' + user.id, user).subscribe((putSuccess: any) => {
+            console.log('updating', putSuccess)
             observer.next(putSuccess);
             observer.complete();
           }, (putError) => {

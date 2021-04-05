@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApplicationState } from '../../../../store';
 import { Store } from '@ngrx/store';
 import { upsertUser } from '../../../../store/user/user.actions';
 import { User } from 'src/app/store/user/user.model';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -15,8 +15,8 @@ import { UserService } from 'src/app/services/user.service';
 export class AddEditUserComponent implements OnInit {
   userForm: FormGroup;
   loading = false;
-  constructor(private formBuilder: FormBuilder, private store: Store<ApplicationState>, private dialogRef: MatDialogRef<AddEditUserComponent>, private userService: UserService) { }
-
+  currentUser: User;
+  constructor(private formBuilder: FormBuilder, private store: Store<ApplicationState>, private dialogRef: MatDialogRef<AddEditUserComponent>, private userService: UserService, @Inject(MAT_DIALOG_DATA) public data) { }
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
       'firstname': ['', Validators.required],
@@ -28,6 +28,19 @@ export class AddEditUserComponent implements OnInit {
       'password': ['', Validators.required],
       'gender': ['', Validators.required]
     })
+
+    if (this.data) {
+      this.currentUser = this.data.currentUser;
+      this.userForm.patchValue({
+        firstname: this.currentUser.firstName,
+        middlename: this.currentUser.middlename,
+        username: this.currentUser.username,
+        email: this.currentUser.email,
+        phoneNumber: this.currentUser.phoneNumber,
+        gender: this.currentUser.gender,
+        surname:this.currentUser.surname
+      })
+    }
   }
 
   makeId(): string {
@@ -53,7 +66,7 @@ export class AddEditUserComponent implements OnInit {
   async onSave(formData) {
     this.loading = true;
     const userObject: User = {
-      id: this.makeId(),
+      id: this.currentUser ? this.currentUser.id : this.makeId(),
       firstName: formData['firstname'],
       surname: formData['surname'],
       phoneNumber: formData['phoneNumber'],
@@ -62,18 +75,23 @@ export class AddEditUserComponent implements OnInit {
       middlename: formData['middleName'],
       organisationUnits: [{ id: 'YGvqjmuDP6W' }],
       userCredentials: {
-        id: this.makeId(),
-        userInfo: {
+        id: this.currentUser ? this.currentUser.userCredentials.id : this.makeId(),
+        userInfo: this.currentUser ? this.currentUser.userCredentials.userInfo : {
           id: this.makeId()
         },
         username: formData['username'],
-        password: formData['password']
+      }
+    }
+    if(!this.currentUser) {
+      userObject.userCredentials = {
+        ...userObject.userCredentials,
+        password:formData['password']
       }
     }
     try {
       await this.userService.addDHISUser(userObject).toPromise();
       this.store.dispatch(upsertUser({ user: userObject }))
-    }catch(e) {
+    } catch (e) {
       console.error(e)
     }
     this.loading = false;

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { routeAnimations } from '../shared/animations/router-animation';
 import { ApplicationState } from '../store';
 import { Go } from '../store/router/router.action';
-import { addCurrentUser } from '../store/user/user.actions';
+import { addCurrentUser, getUsers } from '../store/user/user.actions';
 import { User } from '../store/user/user.model';
 import * as userSelector from '../store/user/user.selectors';
 
@@ -45,7 +45,8 @@ export class HomeComponent implements OnInit {
     if (localStorage.getItem('current-user-token')) {
       const user = localStorage.getItem('user-object');
       this.store.dispatch(addCurrentUser({ user: JSON.parse(user) }));
-      console.log('user', user);
+      this.store.dispatch(getUsers());
+      // console.log('user', user);
     } else {
       this.store.dispatch(new Go({ path: ['login'] }))
     }

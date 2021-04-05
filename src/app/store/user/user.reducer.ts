@@ -26,6 +26,7 @@ export const reducer = createReducer(
     return adapter.upsertOne(user, state);
   }),
   on(userActions.upsertUsers, (state, { users }) => {
+    console.log('users-reducer', users);
     return adapter.upsertMany(users, state);
   }),
   on(userActions.addCurrentUser, (state, { user }) => {

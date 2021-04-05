@@ -1,34 +1,60 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { fadeIn } from '../../animations/router-animation';
+import { TableConfiguration } from '../../app-table-configuration';
 
 @Component({
   selector: 'app-table',
   templateUrl: './app-table.component.html',
-  styleUrls: ['./app-table.component.scss']
+  styleUrls: ['./app-table.component.scss'],
+  animations:[fadeIn]
 })
 export class AppTableComponent implements OnInit, OnChanges {
 
-  @Input() tableConfiguration: {
-    tableColumns: { name: string, label: string }[],
-  }
+  @Input() tableConfiguration: TableConfiguration
 
   @Input() tableList: any[];
+  @Output() viewItemDetails = new EventEmitter();
+  @Output() updateItemDetails = new EventEmitter();
+  @Output() deletingItem = new EventEmitter();
 
   displayedColumns: string[];
   dataSource: MatTableDataSource<any>;
+  showActions = false;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource(this.tableList);
-    this.displayedColumns = ['position', ...this.tableConfiguration.tableColumns.map(column => column.name)];
-    console.log('displayed columns', this.displayedColumns);
+    this.initData();
   }
 
   ngOnChanges() {
+    this.initData();
+  }
+
+  initData() {
     this.dataSource = new MatTableDataSource(this.tableList);
     this.displayedColumns = ['position', ...this.tableConfiguration.tableColumns.map(column => column.name)];
-    console.log('displayed columns', this.displayedColumns);
+    this.showActions = this.tableList.length && this.tableConfiguration.actionButtons !== null;
+    if (this.showActions) {
+      this.displayedColumns.push('actions');
+    }
+
+  }
+
+  updateItem(event) {
+    console.log('updating', event);
+    this.updateItemDetails.emit(event)
+  }
+
+  deleteItem(event) {
+    console.log('deleting', event);
+    this.deletingItem.emit(event);
+  }
+
+  viewItem(event) {
+    console.log('viewing', event);
+    this.viewItemDetails.emit(event);
   }
 
 }

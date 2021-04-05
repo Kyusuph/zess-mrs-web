@@ -10,7 +10,8 @@
     <div class="col-sm-12">
       <app-table
         [tableConfiguration]="tableConfiguration"
-        [tableList]="users"
+        [tableList]="users$ | async"
+        (updateItemDetails)="updateUser($event)"
       ></app-table>
     </div>
   </div>

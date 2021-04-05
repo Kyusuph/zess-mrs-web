@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-sm-12" style="padding: 10px">
-    <span class="text-muted">Add New User</span>
+    <span class="text-muted" *ngIf="!currentUser">Add New User</span>
+    <span class="text-muted" *ngIf="currentUser">Edit User</span>
   </div>
 </div>
 <mat-divider></mat-divider>
@@ -8,25 +9,25 @@
   <div class="col-sm-12" style="padding-top: 10px">
     <form [formGroup]="userForm">
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-6">
           <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
             <input type="text" matInput formControlName="firstname" />
           </mat-form-field>
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-6">
           <mat-form-field appearance="outline">
             <mat-label>Middle Name</mat-label>
             <input type="text" matInput formControlName="middlename" />
           </mat-form-field>
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-6">
           <mat-form-field appearance="outline">
             <mat-label>Surname</mat-label>
             <input type="text" matInput formControlName="surname" />
           </mat-form-field>
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-6">
           <mat-form-field appearance="outline">
             <mat-label>Gender</mat-label>
             <mat-select formControlName="gender" matInput>
@@ -35,25 +36,25 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-6">
           <mat-form-field appearance="outline">
             <mat-label>Phone Number</mat-label>
             <input type="text" formControlName="phoneNumber" matInput />
           </mat-form-field>
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-6">
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input type="text" matInput formControlName="email" />
           </mat-form-field>
         </div>
-        <div class="col-sm-12">
+        <div [ngClass]="{'col-sm-12' :currentUser, 'col-sm-6':!currentUser}">
           <mat-form-field appearance="outline">
             <mat-label>User name</mat-label>
             <input type="text" matInput formControlName="username" />
           </mat-form-field>
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-6" *ngIf="!currentUser">
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
             <input type="password" matInput formControlName="password" />
