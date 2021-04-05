@@ -13,6 +13,7 @@ import { Go } from '../store/router/router.action';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   authenticating = false;
+  showPassword = false;
   constructor(private formbBuilder: FormBuilder, private userService:UserService,private store:Store<ApplicationState>) { }
 
   ngOnInit(): void {
