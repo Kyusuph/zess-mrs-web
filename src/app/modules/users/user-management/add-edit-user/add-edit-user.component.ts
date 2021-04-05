@@ -60,7 +60,7 @@ export class AddEditUserComponent implements OnInit {
       email: formData['email'],
       gender: formData['gender'],
       middlename: formData['middleName'],
-      organisationUnits: [{ id: 'REJLn84PlMJ' }],
+      organisationUnits: [{ id: 'YGvqjmuDP6W' }],
       userCredentials: {
         id: this.makeId(),
         userInfo: {
