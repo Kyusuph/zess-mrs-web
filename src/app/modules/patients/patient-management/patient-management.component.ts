@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditPatientComponent } from './add-edit-patient/add-edit-patient.component';
+import * as patientSelector from '../../../store/patient/patient.selectors';
+import { ApplicationState } from 'src/app/store';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Patient } from 'src/app/store/patient/patient.model';
 
 @Component({
   selector: 'app-patient-management',
@@ -10,7 +15,7 @@ import { AddEditPatientComponent } from './add-edit-patient/add-edit-patient.com
 export class PatientManagementComponent implements OnInit {
   tableConfiguration = {
     tableColumns: [
-      { name: 'firstname', label: 'First Name' },
+      { name: 'firstName', label: 'First Name' },
       { name: 'surname', label: 'Surname' },
       { name: 'phoneNumber', label: 'Phone Number' },
       // { name: 'insurance', label: 'Insurance' },
@@ -18,9 +23,11 @@ export class PatientManagementComponent implements OnInit {
       { name: 'gender', label: 'Gender' }
     ]
   }
-  constructor(private dialog: MatDialog) { }
+  patients$:Observable<Patient[]>;
+  constructor(private dialog: MatDialog, private store:Store<ApplicationState>) { }
 
   ngOnInit(): void {
+    this.patients$ = this.store.pipe(select(patientSelector.selectAll));
   }
 
   onAdd() {

@@ -15,8 +15,8 @@ import { AddEditCaseComponent } from './add-edit-case/add-edit-case.component';
 export class CaseManagementComponent implements OnInit {
   tableConfiguration = {
     tableColumns: [
-      { name: 'caseNumber', label: 'Case Number' },
-      { name: 'patient', label: 'Patient' },
+      { name: 'case_number', label: 'Case Number' },
+      { name: 'patient_name', label: 'Patient' },
       { name: 'notes', label: 'Notes' },
       { name: 'complaints', label: 'Complaints' },
       { name: 'status', label: 'Status' }
@@ -26,7 +26,7 @@ export class CaseManagementComponent implements OnInit {
   constructor(private store: Store<ApplicationState>, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.cases$ = this.store.select(caseSelector.selectAll);
+    this.cases$ = this.store.select(caseSelector.selectDetailed);
   }
 
   onAdd() {

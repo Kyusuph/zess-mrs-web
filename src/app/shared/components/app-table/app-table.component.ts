@@ -7,7 +7,7 @@ import { TableConfiguration } from '../../app-table-configuration';
   selector: 'app-table',
   templateUrl: './app-table.component.html',
   styleUrls: ['./app-table.component.scss'],
-  animations:[fadeIn]
+  animations: [fadeIn]
 })
 export class AppTableComponent implements OnInit, OnChanges {
 
@@ -33,13 +33,21 @@ export class AppTableComponent implements OnInit, OnChanges {
   }
 
   initData() {
+    this.tableConfiguration = {
+      ...this.tableConfiguration,
+      actionButtons: this.tableConfiguration.actionButtons ? this.tableConfiguration.actionButtons : {
+        edit: false,
+        delete: false,
+        view: false,
+        customButton: false
+      }
+    }
     this.dataSource = new MatTableDataSource(this.tableList);
     this.displayedColumns = ['position', ...this.tableConfiguration.tableColumns.map(column => column.name)];
-    this.showActions = this.tableList.length && this.tableConfiguration.actionButtons !== null;
+    this.showActions = this.tableList.length && this.tableConfiguration.actionButtons.customButton || this.tableConfiguration.actionButtons.delete || this.tableConfiguration.actionButtons.edit || this.tableConfiguration.actionButtons.view;
     if (this.showActions) {
       this.displayedColumns.push('actions');
     }
-
   }
 
   updateItem(event) {

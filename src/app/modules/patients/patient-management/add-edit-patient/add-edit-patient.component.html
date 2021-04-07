@@ -77,11 +77,14 @@
           <mat-datepicker #datepicker></mat-datepicker>
         </mat-form-field>
       </div>
-      <div class="col-sm-12">
+      <div class="col-sm-12" *ngIf="!loading">
         <save-area
           (save)="onSave(patientForm.value)"
           (cancel)="onCancel()"
         ></save-area>
+      </div>
+      <div class="col-sm-12" *ngIf="loading">
+        <app-loader [message]="'Saving patient details...'"></app-loader>
       </div>
     </div>
   </form>

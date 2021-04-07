@@ -10,7 +10,7 @@
     <div class="col-sm-12">
       <app-table
         [tableConfiguration]="tableConfiguration"
-        [tableList]="[]"
+        [tableList]="patients$ | async"
       ></app-table>
     </div>
   </div>

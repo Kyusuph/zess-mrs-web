@@ -38,7 +38,7 @@ export class AddEditUserComponent implements OnInit {
         email: this.currentUser.email,
         phoneNumber: this.currentUser.phoneNumber,
         gender: this.currentUser.gender,
-        surname:this.currentUser.surname
+        surname: this.currentUser.surname
       })
     }
   }
@@ -73,19 +73,20 @@ export class AddEditUserComponent implements OnInit {
       email: formData['email'],
       gender: formData['gender'],
       middlename: formData['middleName'],
-      organisationUnits: [{ id: 'YGvqjmuDP6W' }],
+      organisationUnits: [{ id: 'Jm79zeWPhHM' }],
       userCredentials: {
         id: this.currentUser ? this.currentUser.userCredentials.id : this.makeId(),
         userInfo: this.currentUser ? this.currentUser.userCredentials.userInfo : {
           id: this.makeId()
         },
         username: formData['username'],
+        userRoles: [{ id: 'yrB6vc5Ip3r' }]
       }
     }
-    if(!this.currentUser) {
+    if (!this.currentUser) {
       userObject.userCredentials = {
         ...userObject.userCredentials,
-        password:formData['password']
+        password: formData['password']
       }
     }
     try {

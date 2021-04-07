@@ -7,3 +7,4 @@ export const getCustomerState = createFeatureSelector<fromReducer.State>(
 );
 
 export const selectAll = createSelector(getCustomerState, fromReducer.selectAll);
+export const selectEntities = createSelector(getCustomerState, fromReducer.selectEntities);

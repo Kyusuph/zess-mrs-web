@@ -7,6 +7,7 @@ export const loadPatients = createAction(
 
 export const upsertPatient = createAction('[Patient] Upsert Patient', props<{ patient: Patient }>());
 export const upsertPatients = createAction('[Patient] Upsert Patients', props<{ patients: Patient[] }>());
+export const getPatients = createAction('[Patient] Get patients');
 
 
 

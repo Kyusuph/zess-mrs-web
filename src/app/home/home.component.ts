@@ -3,6 +3,8 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { routeAnimations } from '../shared/animations/router-animation';
 import { ApplicationState } from '../store';
+import { getCases } from '../store/case/case.actions';
+import { getPatients } from '../store/patient/patient.actions';
 import { Go } from '../store/router/router.action';
 import { addCurrentUser, getUsers } from '../store/user/user.actions';
 import { User } from '../store/user/user.model';
@@ -46,6 +48,8 @@ export class HomeComponent implements OnInit {
       const user = localStorage.getItem('user-object');
       this.store.dispatch(addCurrentUser({ user: JSON.parse(user) }));
       this.store.dispatch(getUsers());
+      this.store.dispatch(getPatients());
+      this.store.dispatch(getCases());
       // console.log('user', user);
     } else {
       this.store.dispatch(new Go({ path: ['login'] }))

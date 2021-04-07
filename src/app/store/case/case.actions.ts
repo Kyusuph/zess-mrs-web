@@ -7,4 +7,5 @@ export const loadCases = createAction(
 
 export const upsertCase = createAction('[Case] Upsert Case', props<{ caseObject: Case }>());
 export const upsertCases = createAction('[Case] Upsert Cases', props<{ cases: Case[] }>());
+export const getCases = createAction('[Case] get cases')
 

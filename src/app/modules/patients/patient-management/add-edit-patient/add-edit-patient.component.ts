@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { BasicDataService } from 'src/app/services/basic-data.service';
+import { DataStoreKeys } from 'src/app/store/dataStoreKeys';
 import { upsertPatient } from 'src/app/store/patient/patient.actions';
 import { CommonService } from '../../../../services/common.service';
 import { ApplicationState } from '../../../../store';
@@ -14,7 +16,8 @@ import { Patient } from '../../../../store/patient/patient.model';
 })
 export class AddEditPatientComponent implements OnInit {
   patientForm: FormGroup;
-  constructor(private dialogRef: MatDialogRef<AddEditPatientComponent>, private formBuilder: FormBuilder, private store: Store<ApplicationState>, private commonService: CommonService) { }
+  loading = false;
+  constructor(private dialogRef: MatDialogRef<AddEditPatientComponent>, private formBuilder: FormBuilder, private store: Store<ApplicationState>, private commonService: CommonService, private basicService:BasicDataService) { }
 
   ngOnInit(): void {
     this.patientForm = this.formBuilder.group({
@@ -28,7 +31,8 @@ export class AddEditPatientComponent implements OnInit {
     })
   }
 
-  onSave(formData) {
+  async onSave(formData) {
+    this.loading = true;
     const patientObject: Patient = {
       id: this.commonService.makeId(),
       firstName: formData['firstname'],
@@ -37,11 +41,19 @@ export class AddEditPatientComponent implements OnInit {
       address: formData['address'],
       gender: formData['gender'],
       phoneNumber: formData['phoneNumber'],
-      dob: new Date(formData['date']).toISOString(),
+      dob: new Date(formData['dob']).toISOString(),
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     }
-    this.store.dispatch(upsertPatient({ patient: patientObject }));
+    try {
+      await this.basicService.saveToDataStore(DataStoreKeys.Patients,patientObject.id,patientObject).toPromise();
+      this.store.dispatch(upsertPatient({ patient: patientObject }));
+      this.basicService.showSuccess('Patient Saved Successfully')
+    }catch(e){
+      console.error('Failed to save patient');
+      this.basicService.showError('Failed to save patient')
+    }
+    this.loading = false;
     this.onCancel();
   }
 
